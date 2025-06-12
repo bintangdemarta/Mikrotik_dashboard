@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Mikrotik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dashboard Kecepatan Internet Mikrotik</h1>
+
+    <div class="dashboard">
+        <div class="card">
+            <h2>Download</h2>
+            <p id="rx-speed">0 Kbps</p>
+        </div>
+        <div class="card">
+            <h2>Upload</h2>
+            <p id="tx-speed">0 Kbps</p>
+        </div>
+        <div class="card">
+            <h2>Total Hari Ini</h2>
+            <p id="total-usage">0 MB</p>
+        </div>
+    </div>
+
+    <canvas id="usageChart" width="800" height="300" style="margin-top: 40px;"></canvas>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
