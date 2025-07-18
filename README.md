@@ -40,3 +40,32 @@ Banyak pengguna Mikrotik membutuhkan cara mudah untuk memantau trafik internet m
 
 ## 🧱 Arsitektur Teknis
 
+Arsitektur sistem ini dirancang untuk efisiensi, modularitas, dan kemudahan skalabilitas. Berikut penjelasan singkat mengenai alur teknis proyek ini:
+
+### 🖥️ 1. Frontend (Tampilan Dashboard)
+- **Bahasa**: HTML, CSS, JavaScript
+- **Framework**: Native (tanpa framework), menggunakan **Chart.js** untuk grafik.
+- **Fungsi**: 
+  - Menampilkan kecepatan internet secara real-time.
+  - Menampilkan total pemakaian harian.
+  - Menampilkan grafik jam sibuk berdasarkan data historis.
+
+### ⚙️ 2. Backend (API PHP)
+- **routeros_api.class.php**: Library untuk komunikasi ke Mikrotik via API.
+- **traffic.php**: Mengambil data kecepatan internet (rx dan tx) dari interface Mikrotik setiap kali diakses.
+- **daily.php**: Disarankan dijalankan via cronjob setiap jam → menyimpan total tx/rx ke database.
+- **peak_hours.php**: Mengambil data dari MySQL dan mengelompokkan berdasarkan jam untuk ditampilkan dalam grafik.
+
+### 🗄️ 3. Database (MySQL)
+- **Tabel: `internet_traffic`**
+  - Menyimpan data `timestamp`, `rx`, dan `tx`.
+  - Data digunakan untuk menghitung total harian dan analisa jam sibuk.
+- **Efisiensi**: Query menggunakan agregasi per jam (`HOUR(timestamp)`) agar ringan dan cepat.
+
+### 🔁 4. Scheduler (Opsional)
+- Cron job / Scheduled Task menjalankan `daily.php` tiap jam untuk menyimpan data penggunaan internet ke dalam database.
+- Alternatif lain: gunakan Node.js atau Python untuk data collector jika ingin skalabilitas lebih lanjut.
+
+### 📡 5. Mikrotik (RB942-1nD atau lainnya)
+- Harus mengaktifkan layanan API:
+
