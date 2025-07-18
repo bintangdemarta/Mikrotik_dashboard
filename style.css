@@ -66,3 +66,18 @@ canvas#usageChart {
     margin: 0 auto 40px;
     display: block;
 }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f6fa;
+  color: #333;
+  padding: 2rem;
+  text-align: center;
+}
+canvas {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
