@@ -69,3 +69,35 @@ Arsitektur sistem ini dirancang untuk efisiensi, modularitas, dan kemudahan skal
 ### 📡 5. Mikrotik (RB942-1nD atau lainnya)
 - Harus mengaktifkan layanan API:
 
+## 🚀 Deployment
+
+Berikut langkah-langkah untuk melakukan deployment dashboard ini ke server lokal maupun VPS:
+
+### 📁 Struktur Folder
+/dashboard-mikrotik/
+├── api/
+│ ├── traffic.php
+│ ├── daily.php
+│ ├── peak_hours.php
+│ └── routeros_api.class.php
+├── css/
+│ └── style.css
+├── js/
+│ └── chart-handler.js
+├── index.html
+├── db/
+│ └── database.sql (dummy data)
+├── README.md
+
+### 🧰 Kebutuhan Server
+- PHP 7.4+
+- MySQL Server
+- Apache/Nginx
+- Akses jaringan ke IP Mikrotik (API aktif)
+
+### 📌 Langkah Instalasi
+
+1. **Clone Project**
+   ```bash
+   git clone https://github.com/username/dashboard-mikrotik.git
+   cd dashboard-mikrotik
